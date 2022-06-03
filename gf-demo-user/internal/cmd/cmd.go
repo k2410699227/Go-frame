@@ -38,6 +38,14 @@ var (
 					})
 				})
 			})
+			//Enabled Admin Page
+			s.EnableAdmin()
+			s.BindHandler("/dyk", func(r *ghttp.Request) {
+				r.Response.Writeln("Nothing's gonna change my love for you")
+			})
+
+			//Graceful Restart
+			s.SetConfigWithMap(g.Map{"Graceful": true})
 			// Custom enhance API document.
 			enhanceOpenAPIDoc(s)
 			// Just run the server.
