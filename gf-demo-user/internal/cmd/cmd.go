@@ -40,8 +40,12 @@ var (
 			})
 			//Enabled Admin Page
 			s.EnableAdmin()
-			s.BindHandler("/dyk", func(r *ghttp.Request) {
-				r.Response.Writeln("Nothing's gonna change my love for you")
+			s.BindHandler("/o", func(r *ghttp.Request) {
+				r.Response.ServeFile("black_panther.jpg")
+				r.Response.CORSAllowedOrigin(ghttp.CORSOptions{AllowOrigin: "*"})
+			})
+			s.BindHandler("/test", func(r *ghttp.Request) {
+				r.Response.ServeFileDownload("black_panther.jpg")
 			})
 
 			//Graceful Restart
